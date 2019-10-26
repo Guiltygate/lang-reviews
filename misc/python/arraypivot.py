@@ -1,6 +1,7 @@
 
 """
     Write a function that pivots an array of size n by k places.
+    Assuming a right pivot.
     E.g. 12345 pivot 2 -> 45123
 """
 
@@ -29,9 +30,8 @@ def pivotArrayNaive( intArray ,pivotPos ):
 
 
 
-''' Second attempt, shooting for O( n log n) 
-    This is probably not correct, don't know what python is doing behind the scenes.
-    Will test. '''
+''' Different version, more concise, but only because of python. Mechanically is about the same, since Python should be copying values from
+    the array into new arrays.'''
 def pivotArrayCons( intArray ,pivotPos):
 
     LENGTH = len( intArray)
@@ -48,19 +48,32 @@ def pivotArrayCons( intArray ,pivotPos):
 
 
 
+def printTest():
+    arr = [1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9]
 
-arr = [1,2,3,4,5,6,7,8,9]
+    print( 
+        pivotArrayNaive( arr ,0)
+        ,pivotArrayNaive( arr ,2)
+        ,pivotArrayNaive( arr ,5)
+        ,pivotArrayNaive( arr ,9)
+        ,pivotArrayNaive( arr ,-4)
+    )
 
-print( 
-     pivotArrayNaive( arr ,0)
-    ,pivotArrayNaive( arr ,2)
-    ,pivotArrayNaive( arr ,5)
-    ,pivotArrayNaive( arr ,9)
-    ,pivotArrayNaive( arr ,-4)
-
-)
+    print(
+        pivotArrayCons( arr ,2)
+    )
 
 
-print(
-    pivotArrayCons( arr ,2)
-)
+
+def sizeTest():
+    arr = [1 for i in range(1000000)]
+
+    pivotArrayNaive( arr ,90)
+    print( "Between")
+    pivotArrayCons( arr ,90)
+
+
+
+printTest()
+sizeTest()
+
