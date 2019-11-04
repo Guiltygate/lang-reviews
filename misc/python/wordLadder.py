@@ -15,6 +15,7 @@ import json
 import string
 from Queue import Queue
 
+from leetCodeSolution import Solution
 
 
 class WordGraph:
@@ -206,13 +207,25 @@ def readDictionary():
     return dictionary
 
 
+def stripDifferentLengths( dictionary ,length):
+    dictList = []
+    for word in dictionary:
+        if len(word) == length:
+            dictList.append( word)
+    
+    return dictList
 
 
 
 dictionary = readDictionary()
+dictionary = stripDifferentLengths( dictionary ,4)
 
-wordGraph3 = WordGraph( dictionary ,3)
-print( wordGraph3.findPath( 'cat' ,'dog'))
+dictList = list( dictionary)
+print( 'Leet Code Solution: ' + Solution.ladderLength( Solution() ,'lark' ,'lake' ,dictList).__str__() )
+
+
+# wordGraph3 = WordGraph( dictionary ,3)
+# print( wordGraph3.findPath( 'cat' ,'dog'))
 # print( wordGraph3.findPath('cog' ,'hog') )
 # print( wordGraph3.findPath('cog' ,'sun') )
 
